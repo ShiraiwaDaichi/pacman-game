@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>パックマンゲーム</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        #gameCanvas {
+            border: 2px solid #00f;
+            background-color: #000;
+            display: block;
+        }
+        
+        #gameInfo {
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        #score {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        
+        #controls {
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .control-key {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #fff;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <h1>パックマンゲーム</h1>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    
+    <div id="gameInfo">
+        <div id="score">スコア: <span id="scoreValue">0</span></div>
+        <div id="lives">ライフ: <span id="livesValue">3</span></div>
+    </div>
+    
+    <div id="controls">
+        <p>操作方法:</p>
+        <span class="control-key">↑</span>
+        <span class="control-key">↓</span>
+        <span class="control-key">←</span>
+        <span class="control-key">→</span>
+        <p>またはWASDキー</p>
+    </div>
+
+    <script src="js/game.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/ghost.js"></script>
+    <script src="js/maze.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

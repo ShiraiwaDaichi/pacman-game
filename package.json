@@ -1,0 +1,30 @@
+{
+  "name": "pacman-game",
+  "version": "1.0.0",
+  "description": "HTML5 Canvas and JavaScript Pacman clone game for learning real-time game development",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve .",
+    "dev": "npx live-server ."
+  },
+  "keywords": [
+    "pacman",
+    "game",
+    "javascript",
+    "html5",
+    "canvas",
+    "real-time",
+    "ai",
+    "collision-detection"
+  ],
+  "author": "roman0c0love@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/USERNAME/pacman-game.git"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}

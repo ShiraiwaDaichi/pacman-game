@@ -49,27 +49,39 @@ class Game {
     
     setupControls() {
         document.addEventListener('keydown', (e) => {
+            // ゲーム関連のキーの場合は、デフォルト動作を防ぐ
+            const gameKeys = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' ', 'w', 'W', 'a', 'A', 's', 'S', 'd', 'D'];
+            if (gameKeys.includes(e.key)) {
+                e.preventDefault();
+            }
+            
             if (this.gameState !== 'playing') return;
+            
+            console.log('キー押下:', e.key); // デバッグ用
             
             switch(e.key) {
                 case 'ArrowUp':
                 case 'w':
                 case 'W':
+                    console.log('上方向に移動');
                     this.player.setDirection(0, -1);
                     break;
                 case 'ArrowDown':
                 case 's':
                 case 'S':
+                    console.log('下方向に移動');
                     this.player.setDirection(0, 1);
                     break;
                 case 'ArrowLeft':
                 case 'a':
                 case 'A':
+                    console.log('左方向に移動');
                     this.player.setDirection(-1, 0);
                     break;
                 case 'ArrowRight':
                 case 'd':
                 case 'D':
+                    console.log('右方向に移動');
                     this.player.setDirection(1, 0);
                     break;
                 case ' ':
@@ -77,6 +89,10 @@ class Game {
                     break;
             }
         });
+        
+        // キャンバスにフォーカスを設定
+        this.canvas.setAttribute('tabindex', '0');
+        this.canvas.focus();
     }
     
     togglePause() {

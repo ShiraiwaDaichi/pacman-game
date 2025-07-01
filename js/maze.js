@@ -3,7 +3,7 @@ class Maze {
     constructor() {
         this.tileSize = 20;
         this.width = 27;
-        this.height = 31;
+        this.height = 23;
         
         // 迷路のレイアウト
         // 0: 通路, 1: 壁, 2: ドット, 3: パワーペレット

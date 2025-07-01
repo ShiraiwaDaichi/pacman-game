@@ -40,6 +40,11 @@ class Ghost {
     }
     
     update(deltaTime) {
+        // デバッグ: 赤いゴーストの状態をログ出力
+        if (this.color === '#ff0000') {
+            console.log(`赤ゴースト: 位置(${this.x}, ${this.y}), 方向(${this.direction.x}, ${this.direction.y}), モード: ${this.mode}`);
+        }
+        
         // モードタイマー更新
         if (this.mode === 'frightened') {
             this.modeTimer -= deltaTime;
@@ -96,8 +101,8 @@ class Ghost {
         switch (this.color) {
             case '#ff0000': return { x: 25, y: 0 }; // 赤：右上
             case '#ffb8ff': return { x: 2, y: 0 };  // ピンク：左上
-            case '#00ffff': return { x: 25, y: 30 }; // 青：右下
-            case '#ffb852': return { x: 2, y: 30 };  // オレンジ：左下
+            case '#00ffff': return { x: 25, y: 22 }; // 青：右下
+            case '#ffb852': return { x: 2, y: 22 };  // オレンジ：左下
             default: return { x: 13, y: 15 };
         }
     }

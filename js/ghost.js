@@ -41,9 +41,9 @@ class Ghost {
     
     update(deltaTime) {
         // デバッグ: 赤いゴーストの状態をログ出力
-        if (this.color === '#ff0000') {
-            console.log(`赤ゴースト: 位置(${this.x}, ${this.y}), 方向(${this.direction.x}, ${this.direction.y}), モード: ${this.mode}`);
-        }
+        // if (this.color === '#ff0000') {
+        //     console.log(`赤ゴースト: 位置(${this.x}, ${this.y}), 方向(${this.direction.x}, ${this.direction.y}), モード: ${this.mode}`);
+        // }
         
         // モードタイマー更新
         if (this.mode === 'frightened') {

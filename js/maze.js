@@ -53,16 +53,22 @@ class Maze {
     canMoveTo(x, y) {
         // 境界チェック
         if (y < 0 || y >= this.height || x < -1 || x > this.width) {
+            console.log(`canMoveTo: 境界外 (${x}, ${y})`);
             return false;
         }
         
         // 左右の画面端（ワープ用）は通行可能
         if (x < 0 || x >= this.width) {
-            return y >= 10 && y <= 12; // ワープ通路の高さ
+            const canWarp = y >= 10 && y <= 12;
+            console.log(`canMoveTo: ワープチェック (${x}, ${y}) = ${canWarp}`);
+            return canWarp; // ワープ通路の高さ
         }
         
         // 壁チェック
-        return this.layout[y][x] !== 1;
+        const tile = this.layout[y][x];
+        const canMove = tile !== 1;
+        console.log(`canMoveTo: (${x}, ${y}) タイル値=${tile}, 移動可能=${canMove}`);
+        return canMove;
     }
     
     collectDot(x, y) {

@@ -11,15 +11,16 @@ class Player {
     }
     
     reset() {
-        // 開始位置（迷路の下部中央）
+        // 開始位置（迷路の下部中央の通路）
         this.x = 13;
-        this.y = 20; // 迷路の範囲内に修正
+        this.y = 21; // 迷路の最下部の通路
         this.nextDirection = { x: 0, y: 0 };
         this.currentDirection = { x: 0, y: 0 };
+        console.log('プレイヤーリセット: 位置 (', this.x, ',', this.y, ')');
     }
     
     setDirection(x, y) {
-        console.log(`プレイヤー方向設定: x=${x}, y=${y}, 現在位置: (${this.x}, ${this.y})`);
+        // console.log(`プレイヤー方向設定: x=${x}, y=${y}, 現在位置: (${this.x}, ${this.y})`);
         this.nextDirection.x = x;
         this.nextDirection.y = y;
     }
@@ -28,19 +29,24 @@ class Player {
         // アニメーションフレーム更新
         this.animationFrame += this.animationSpeed * deltaTime;
         
+        // デバッグ: 現在の状態をログ出力
+        if (this.nextDirection.x !== 0 || this.nextDirection.y !== 0) {
+            console.log(`プレイヤーアップデート: 位置(${this.x}, ${this.y}), nextDirection(${this.nextDirection.x}, ${this.nextDirection.y}), currentDirection(${this.currentDirection.x}, ${this.currentDirection.y})`);
+        }
+        
         // 次の方向に移動可能かチェック
         if (this.nextDirection.x !== 0 || this.nextDirection.y !== 0) {
             const nextX = Math.round(this.x + this.nextDirection.x);
             const nextY = Math.round(this.y + this.nextDirection.y);
             
-            console.log(`移動可能性チェック: 現在位置(${this.x}, ${this.y}) -> 次の位置(${nextX}, ${nextY})`);
+            // console.log(`移動可能性チェック: 現在位置(${this.x}, ${this.y}) -> 次の位置(${nextX}, ${nextY})`);
             
             if (this.maze.canMoveTo(nextX, nextY)) {
-                console.log('移動可能！方向を更新');
+                // console.log('移動可能！方向を更新');
                 this.currentDirection = { ...this.nextDirection };
                 this.nextDirection = { x: 0, y: 0 };
             } else {
-                console.log('移動不可能');
+                // console.log('移動不可能');
             }
         }
         
@@ -51,16 +57,16 @@ class Player {
             const newX = this.x + this.currentDirection.x * this.speed * deltaTime;
             const newY = this.y + this.currentDirection.y * this.speed * deltaTime;
             
-            console.log(`移動計算: (${oldX}, ${oldY}) -> (${newX}, ${newY}), deltaTime: ${deltaTime}`);
+            // console.log(`移動計算: (${oldX}, ${oldY}) -> (${newX}, ${newY}), deltaTime: ${deltaTime}`);
             
             // 移動先が壁でないかチェック
             if (this.maze.canMoveTo(Math.round(newX), Math.round(newY))) {
                 this.x = newX;
                 this.y = newY;
-                console.log(`実際に移動: (${this.x}, ${this.y})`);
+                // console.log(`実際に移動: (${this.x}, ${this.y})`);
             } else {
                 // 壁に当たったら停止
-                console.log('壁に当たったため停止');
+                // console.log('壁に当たったため停止');
                 this.currentDirection = { x: 0, y: 0 };
             }
         }
